@@ -1,0 +1,67 @@
+<div class="container" ng-init="onInit()">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="jumbotron">
+                <h1 class="text-center">Angular Challenge</h1>
+                <p class="lead text-center">Current selected date: {{ selectedDate.toDateString() }}</p>
+                <div class="row justify-content-md-center">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="day">Day</label>
+                                <select
+                                        ng-model="day"
+                                        ng-change="formChanged()"
+                                        id="day"
+                                        class="form-control"
+                                        ng-options="item for item in days">
+                                </select>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="month">Month</label>
+                                <select
+                                        ng-model="month"
+                                        ng-change="formChanged()"
+                                        name="month"
+                                        id="month"
+                                        class="form-control"
+                                        ng-options="month.value as month.name for month in months">
+                                </select>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="year">Year</label>
+                                <input
+                                        ng-model="year"
+                                        ng-change="formChanged()"
+                                        type="number"
+                                        class="form-control"
+                                        id="year">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="timestamp">Timestamp</label>
+                                <input
+                                        ng-model="timestamp"
+                                        ng-change="timestampChanged()"
+                                        placeholder="1402974000000"
+                                        type="number"
+                                        class="form-control"
+                                        id="timestamp">
+                            </div>
+
+                            <div class="col-md-12" ng-if="isDayInvalid">
+                                <div class="alert alert-warning">
+                                    <strong>Oh snap!</strong> The selected day has been changed because it was invalid
+                                    for the
+                                    selected month!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,132 @@
+<div class="container" ng-init="onInit()">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="jumbotron">
+                <h1 class="text-center">Bonus Challenge</h1>
+                <h3 class="text-center" ng-if="resultText !== ''">Result:</h3>
+                <h4 class="text-center" ng-if="resultText !== ''">{{ resultText }}</h4>
+                <p class="lead text-center">Operation 1: {{ primaryOperation.getEdits().length > 0
+                    ? primaryOperation.getEdits()
+                    : 'Empty'}}</p>
+                <p class="lead text-center">Operation 2: {{ secondaryOperation.getEdits().length > 0
+                    ? secondaryOperation.getEdits()
+                    : 'Empty'}}</p>
+                <p class="lead text-center">Composed Operation: {{ composedOperation.getEdits().length > 0
+                    ? composedOperation.getEdits()
+                    : 'Empty'}}</p>
+                <p class="lead text-center"></p>
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label for="edit">Add Edit to Operation</label>
+                                <select
+                                        ng-model="edit"
+                                        name="edit"
+                                        id="edit"
+                                        class="form-control"
+                                        ng-options="e.type as e.label for e in editTypes">
+                                </select>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="numberInput">Quantity</label>
+                                <input
+                                        ng-model="number"
+                                        ng-disabled="edit !== 'move' && edit !== 'delete'"
+                                        placeholder="6"
+                                        type="number"
+                                        class="form-control"
+                                        id="numberInput">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="textInput">Text</label>
+                                <input
+                                        ng-model="textInput"
+                                        ng-disabled="edit !== 'insert'"
+                                        placeholder="Just a random phrase"
+                                        type="text"
+                                        class="form-control"
+                                        id="textInput">
+                            </div>
+
+                            <div class="form-group col-md-6 col-sm-12">
+                                <button
+                                        class="btn btn-light btn-block"
+                                        ng-click="onAddEditClicked(0)">
+                                    Add to Operation 1
+                                </button>
+                            </div>
+                            <div class="form-group col-md-6 col-sm-12">
+                                <button
+                                        class="btn btn-light btn-block"
+                                        ng-click="onAddEditClicked(1)">
+                                    Add to Operation 2
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label for="string">String</label>
+                                <input
+                                        ng-model="string"
+                                        placeholder="Input string to apply operations"
+                                        type="text"
+                                        class="form-control"
+                                        id="string">
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <button
+                                        ng-disabled="primaryOperation.getEdits().length < 1
+                                        || secondaryOperation.getEdits().length < 1"
+                                        class="btn btn-primary btn-block"
+                                        ng-click="onComposeClicked()">
+                                    Compose
+                                </button>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <button
+                                        ng-disabled="primaryOperation.getEdits().length < 1"
+                                        class="btn btn-primary btn-block"
+                                        ng-click="onApplyClicked(0)">
+                                    Apply Op 1
+                                </button>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <button
+                                        ng-disabled="secondaryOperation.getEdits().length < 1"
+                                        class="btn btn-primary btn-block"
+                                        ng-click="onApplyClicked(1)">
+                                    Apply Op 2
+                                </button>
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <button
+                                        ng-disabled="composedOperation.getEdits().length < 1"
+                                        class="btn btn-success btn-block"
+                                        ng-click="onApplyClicked(2)">
+                                    Apply Composed Operation
+                                </button>
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <button
+                                        class="btn btn-danger btn-block"
+                                        ng-click="onResetClicked()">
+                                    Reset All Operations
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

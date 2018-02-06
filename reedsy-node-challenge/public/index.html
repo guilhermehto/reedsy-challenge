@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Reedy Challenge - NodeJS</title>
+
+    <link rel="stylesheet" href="styles/bootstrap/bootstrap.min.css">
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+
+    <script type="text/javascript" src="app.module.js"></script>
+
+    <script type="text/javascript" src="app/services/files.service.js"></script>
+
+    <script type="text/javascript" src="app/controllers/index.controller.js"></script>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#"><b>Reedsy</b></a>
+    </nav>
+
+    <div class="container" ng-controller="indexController">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="jumbotron">
+                    <h1 class="text-center">Node.js Challenge</h1>
+                    <p class="lead text-center">This simple interface was created just to help sending requests to the server</p>
+                    <p class="lead text-center">The results from the conversions are logged at the server</p>
+                    <p class="lead text-center">If you want to test it with postman, the request body should contain
+                    a json with this format: { "type": "html" } or { "type": "pdf" } and should be posted to /upload</p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button
+                                    class="btn btn-block btn-light"
+                                    ng-click="onSendFileClicked('html')"
+                            >Post HTML File</button>
+                        </div>
+
+                        <div class="col-md-6">
+                            <button
+                                    class="btn btn-block btn-light"
+                                    ng-click="onSendFileClicked('pdf')"
+                            >Post PDF File</button>
+                        </div>
+                    </div>
+                    <br/>
+                    <br/>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5 class="text-center">Sent order: {{ sentFiles }}</h5>
+                        </div>
+                        <div class="col-md-12 text-center">
+                            <button
+                                    class="btn btn-danger"
+                                    ng-click="onResetSentOrder()"
+                            > Empty Send Order Array
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
