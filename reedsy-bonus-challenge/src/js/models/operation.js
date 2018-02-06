@@ -58,7 +58,7 @@ app.factory('Operation', () => {
                 if(carretPosition + edit.delete >= string.length) {
                     console.warn('Trying to delete more characters than possible, everything from the caret will be deleted.');
                 }
-                string = string.slice(0, carretPosition) + string.slice(carretPosition + edit.delete, string.length-1);
+                string = string.slice(0, carretPosition) + string.slice(carretPosition + edit.delete, string.length);
 
             } else {
                 string = string.slice(0, carretPosition) + edit.insert + string.slice(carretPosition);
